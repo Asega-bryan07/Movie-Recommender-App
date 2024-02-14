@@ -10,6 +10,7 @@ Using Cosine Similarity
 # importing dependencies
 import pandas as pd
 import ast
+import gdown
 from nltk.stem import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -19,11 +20,25 @@ import pickle
 ```Accessed from: https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata```<br>
 ```MovieDB API:```
 """
-credits_url = 'https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata?select=tmdb_5000_credits.csv'
-movies_url = 'https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata?select=tmdb_5000_movies.csv'
 
-credits = pd.read_csv(credits_url)
-movies = pd.read_csv(movies_url)
+# Replace the file_id with the actual file ID from your Google Drive link
+credits_data = '1GW9YdU8Bo9xkdYjvijm9yIBdsDce4tmR'
+movies_data = '1dd5EHukYw5nQKrsFLCkqktXSGRoD0C8m'
+
+
+# Get the direct download link
+url1 = f'https://drive.google.com/uc?id={credits_data}'
+url2 = f'https://drive.google.com/uc?id={movies_data}'
+
+# Download the file to the current working directory
+credit = 'credits_data.csv'
+movie = 'movies_data.csv'
+gdown.download(url1, credit, quiet=False)
+gdown.download(url2, movie, quiet=False)
+
+# Read the CSV files into Pandas DataFrames
+credits = pd.read_csv(credit)
+movies = pd.read_csv(movie)
 
 movies = movies.merge(credits, on='title')
 
