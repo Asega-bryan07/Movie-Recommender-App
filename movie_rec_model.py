@@ -151,7 +151,7 @@ cv = CountVectorizer(max_features=5000, stop_words='english')
 vectors = cv.fit_transform(df['tags']).toarray()
 
 #checking length of feature names
-len(cv.get_feature_names_out())
+# len(cv.get_feature_names_out())
 
 """## Cosine Similarity"""
 
