@@ -6,4 +6,3 @@ ast
 gdown
 nltk
 scikit-learn
-pickle
