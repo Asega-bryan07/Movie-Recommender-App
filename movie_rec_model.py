@@ -21,11 +21,8 @@ import pickle
 ```Accessed from: https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata```<br>
 ```MovieDB API:```
 """
-
-# Replace the file_id with the actual file ID from your Google Drive link
-
-credits_data = os.environ.get("CREDITS_DATA")
-movies_data = os.environ.get("MOVIES_DATA")
+credits_data = "1GW9YdU8Bo9xkdYjvijm9yIBdsDce4tmR"
+movies_data = "1dd5EHukYw5nQKrsFLCkqktXSGRoD0C8m"
 
 
 # Get the direct download link
