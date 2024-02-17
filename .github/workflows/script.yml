@@ -31,7 +31,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8  # Choose the Python version you need
+          python-version: 3.8  
+
+      - name: Set up environment variables
+        run: |
+          echo "export CREDITS_DATA=${{ secrets.SECRET_DATA1 }}" >> $GITHUB_ENV
+          echo "export MOVIES_DATA=${{ secrets.SECRET_DATA2 }}" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: |
