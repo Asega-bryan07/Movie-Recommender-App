@@ -1,3 +1,9 @@
 pickle
 streamlit 
 requests
+pandas
+ast
+gdown
+nltk
+scikit-learn
+pickle
