@@ -35,8 +35,8 @@ jobs:
 
       - name: Set up environment variables
         run: |
-          echo "export CREDITS_DATA=${{ secrets.SECRET_DATA1 }}" >> $GITHUB_ENV
-          echo "export MOVIES_DATA=${{ secrets.SECRET_DATA2 }}" >> $GITHUB_ENV
+          echo "export CREDITS_DATA=${{ secrets.CREDITS_DATA }}" >> $GITHUB_ENV
+          echo "export MOVIES_DATA=${{ secrets.MOVIES_DATA }}" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: |
