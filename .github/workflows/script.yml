@@ -31,10 +31,10 @@ jobs:
         with:
           python-version: 3.8  
 
-      - name: Set permissions for checkout
-        permissions:
-          contents: read
-          pages: write
+      # - name: Set permissions for checkout
+      #   permissions:
+      #     contents: read
+      #     pages: write
 
       - name: Set up environment variables
         run: |
