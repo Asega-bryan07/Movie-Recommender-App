@@ -8,6 +8,7 @@ Using Cosine Similarity
 """
 
 # importing dependencies
+import os
 import pandas as pd
 import ast
 import gdown
@@ -22,8 +23,9 @@ import pickle
 """
 
 # Replace the file_id with the actual file ID from your Google Drive link
-credits_data = '1GW9YdU8Bo9xkdYjvijm9yIBdsDce4tmR'
-movies_data = '1dd5EHukYw5nQKrsFLCkqktXSGRoD0C8m'
+
+credits_data = os.environ.get("CREDITS_DATA")
+movies_data = os.environ.get("MOVIES_DATA")
 
 
 # Get the direct download link
