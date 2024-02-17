@@ -30,12 +30,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.8  
-
-      # - name: Set permissions for checkout
-      #   permissions:
-      #     contents: read
-      #     pages: write
-
+          
       - name: Set up environment variables
         run: |
           echo "export CREDITS_DATA=${{ secrets.CREDITS_DATA }}" >> $GITHUB_ENV
