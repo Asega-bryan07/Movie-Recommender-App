@@ -1,3 +1,5 @@
+--upgrade pip
+--upgrade setuptools
 pickle
 streamlit 
 requests
