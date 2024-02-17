@@ -51,7 +51,7 @@ jobs:
           git config --local user.email "almasibryan7@gmail.com.com"
           git config --local user.name "Asega-bryan07"
           git add -A
-          git diff-index --quiet HEAD || git commit -m "updated logs" --allow-empty
+          git diff-index --quiet HEAD || git commit -m "movie recommender app" --allow-empty
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
