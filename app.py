@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-import pickle
-=======
+
 '''
 Author: BRYAN ASEGA
 Email: Almasibryan7@gmail.com
@@ -8,12 +6,11 @@ Date: 2024-02-05 14:31:59
 '''
 # Dependencies to use
 import pandas as pd
->>>>>>> 033a69db2e971c251caf17c887a1b47af987001c
 import streamlit as st
 import requests
 from streamlit_option_menu import option_menu
 import about, my_profile, mdbconnect
-<<<<<<< HEAD
+
 
 def main():
     # Set page configuration
@@ -66,8 +63,12 @@ def main():
         return recommended_movie_names, recommended_movie_posters
 
     st.header('MOVIE RECOMMENDER APP')
-    movies = pickle.load(open('./model/movie_list.pkl', 'rb'))
-    similarity = pickle.load(open('./model/similarity.pkl', 'rb'))
+	
+    with open('./model/movie_list.pkl', 'rb') as mfile:
+	movies = pd.read_pickle(mfile)
+
+    with open('model/similarity.pkl, 'rb') as sfile:
+	similarity = pd.read_pickle(sfile) 
 
     movie_list = movies['title'].values
     selected_movie = st.selectbox('Type or Select a Movie Name 😎\n', movie_list)
@@ -92,8 +93,6 @@ def main():
 
     # st.write('Watch Out!\nLatest Version Coming Soon')
     '''AI+'''
-
-=======
 
 
 def main():
@@ -184,7 +183,6 @@ def main():
 
 			'''Latest Version Coming Soon'''
 			'''AI+'''
->>>>>>> 033a69db2e971c251caf17c887a1b47af987001c
 
 if __name__ == "__main__":
 	main()
