@@ -3,10 +3,10 @@ Author: BRYAN ASEGA
 Email: Almasibryan7@gmail.com
 Date: 2024-02-05 14:31:59
 '''
+import pandas as pd
 import pickle
 import streamlit as st
 import requests
-import pandas
 
 def main():
     # Set page configuration
