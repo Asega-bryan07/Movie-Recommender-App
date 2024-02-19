@@ -1,8 +1,3 @@
-scikit-learn==0.24.2
-numpy==1.21.2
-scipy==1.7.1
-streamlit[all]
+pickle
+streamlit 
 requests
-pandas
-gdown
-nltk
