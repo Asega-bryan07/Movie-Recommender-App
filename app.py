@@ -59,10 +59,10 @@ def main():
     
     st.header('MOVIE RECOMMENDER APP')
 
-    with open("./model/movie_list.pkl", "rb") as mfile:
-        movies = pickle.load(mfile, encoding='latin1')
-    with open("./model/similarity.pkl", "rb") as sfile:
-        similarity = pickle.load(sfile, encoding='latin1')
+    with open("model/movie_list.pkl", "rb") as mfile:
+        movies = pd.read_pickle(mfile)
+    with open("model/similarity.pkl", "rb") as sfile:
+        similarity = pd.read_pickle(sfile)
     
 
     movie_list = movies['title'].values
