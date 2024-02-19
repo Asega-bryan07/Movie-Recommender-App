@@ -6,6 +6,7 @@ Date: 2024-02-05 14:31:59
 import pickle
 import streamlit as st
 import requests
+import pandas
 
 def main():
     # Set page configuration
@@ -57,8 +58,12 @@ def main():
 
     
     st.header('MOVIE RECOMMENDER APP')
-    movies = pickle.load(open("./model/movie_list.pkl", "rb"))
-    similarity = pickle.load(open("./model/similarity.pkl", "rb"))
+
+    with open("./model/movie_list.pkl", "rb") as mfile:
+        movies = pickle.load(mfile, encoding='latin1')
+    with open("./model/similarity.pkl", "rb") as sfile:
+        similarity = pickle.load(sfile, encoding='latin1')
+    
 
     movie_list = movies['title'].values
     selected_movie = st.selectbox('Type or Select a Movie Name 😎\n', movie_list)
