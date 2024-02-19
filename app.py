@@ -9,7 +9,6 @@ import requests
 import os
 import shutil
 import gdown
-from google.colab import files
 
 def main():
     # Set page configuration
@@ -69,15 +68,14 @@ def main():
     similarity_path = './model/similarity.pkl'
     movie_list_path = './model/movie_list.pkl'
     
-    # Download similarity.pkl from Google Drive using GitHub secret
+    # Download similarity.pkl and movie_list.pkl from Google Drive using GitHub secrets
     gdown.download(f'https://drive.google.com/uc?id={similarity_secret}', similarity_path, quiet=False)
-    
-    # Download movie_list.pkl from Google Drive using GitHub secret
     gdown.download(f'https://drive.google.com/uc?id={movie_list_secret}', movie_list_path, quiet=False)
     
     # Load movie_list.pkl and similarity.pkl
     movies = pickle.load(open(movie_list_path, 'rb'))
     similarity = pickle.load(open(similarity_path, 'rb'))
+
 
 
     movie_list = movies['title'].values
