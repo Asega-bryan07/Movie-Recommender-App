@@ -6,18 +6,13 @@ Date: 2024-02-05 14:31:59
 import pickle
 import streamlit as st
 import requests
-import os
-import shutil
-import io
-import gdown
-import tempfile
 
 def main():
     # Set page configuration
     st.set_page_config(
     page_title="MOVIE RECOMMENDER APP - AI+",
     page_icon="⭐", layout="wide",)
-    
+
 
     # Sidebar with profile image and name
     st.sidebar.image(
@@ -30,7 +25,7 @@ def main():
                 "shape in the next few days.\n\n""\n"
                 "Enjoy the app. Cheers! :)\n""\n"
                 "To access the codes and deployment pipeline, please visit my github page: ""\n"
-                "[https://github.com/asega-bryan07/movie-recommender-app](https://github.com/asega-bryan07/Movie-Recommender-App) "
+                "[https://github.com/asega-bryan07/movie-recommender-app](https://github.com/asega-bryan07/movie-recommender-app) "
                 # "or scan the QR-Code below:\n"
                 # "./profile/logo.jpg"
     )
@@ -60,30 +55,11 @@ def main():
             recommended_movie_posters.append(fetch_poster(movie_id))
         return recommended_movie_names, recommended_movie_posters
 
-    # the movie title
+
     st.header('MOVIE RECOMMENDER APP')
-    # models
-    similarity_file_id = '1uUb33kGuLlyJAIQlNPNRgR5zUDnFz3Cr'
-    movie_list_file_id = '1X70vCuF4t5lHPysRi1XhJCfQHra5l4jI'
+    movies = pickle.load(open('./model/movie_list.pkl', 'rb'))
+    similarity = pickle.load(open('./model/similarity.pkl', 'rb'))
 
-    with tempfile.NamedTemporaryFile(suffix='.pkl', delete=False) as sim_file, \
-         tempfile.NamedTemporaryFile(suffix='.pkl', delete=False) as movie_file:
-    
-        # Download similarity.pkl from Google Drive
-        similarity_url = f'https://drive.google.com/uc?id={similarity_file_id}'
-        sim_file.write(requests.get(similarity_url).content)
-    
-        # Download movie_list.pkl from Google Drive
-        movie_list_url = f'https://drive.google.com/uc?id={movie_list_file_id}'
-        movie_file.write(requests.get(movie_list_url).content)
-
-        # Load movie_list.pkl and similarity.pkl
-        sim_file.seek(0)  # Move the cursor to the beginning of the file
-        movie_file.seek(0) 
-
-        similarity = pickle.load(sim_file)
-        movies = pickle.load(movie_file)
-             
     movie_list = movies['title'].values
     selected_movie = st.selectbox('Type or Select a Movie Name 😎\n', movie_list)
     if st.button('Recommended Movie'):
@@ -104,10 +80,11 @@ def main():
         with col5:
             st.text(recommended_movie_names[4])
             st.image(recommended_movie_posters[4])
-            
-            # st.write('Watch Out!\nLatest Version Coming Soon') 
+
+            # st.write('Watch Out!\nLatest Version Coming Soon')
             '''AI+'''
-    
+
+
     st.markdown(
         """
         <head>
@@ -115,7 +92,7 @@ def main():
         </head>
         <style>
             body {
-                background-color: #orange;  
+                background-color: #orange;
             }
             .footer {
                 display: flex;
