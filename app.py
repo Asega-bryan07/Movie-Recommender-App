@@ -86,7 +86,7 @@ def main():
             st.text(recommended_movie_names[4])
             st.image(recommended_movie_posters[4])
             
-            # st.write('Watch Out!\nLatest Version Coming Soon') 
+            '''Latest Version Coming Soon'''
             '''AI+'''
 
     
