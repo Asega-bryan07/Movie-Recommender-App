@@ -57,8 +57,8 @@ def main():
 
     
     st.header('MOVIE RECOMMENDER APP')
-    movies = pickle.load(open('/model/movie_list.pkl', 'rb'))
-    similarity = pickle.load(open('/model/similarity.pkl', 'rb'))
+    movies = pickle.load(open('model/movie_list.pkl', 'rb'))
+    similarity = pickle.load(open('model/similarity.pkl', 'rb'))
 
     movie_list = movies['title'].values
     selected_movie = st.selectbox('Type or Select a Movie Name 😎\n', movie_list)
