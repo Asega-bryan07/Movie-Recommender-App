@@ -81,8 +81,8 @@ def main():
         movie_content = movie_file.read()
     
     # Unpickle the content
-    movies = pickle.loads(movie_content)
-    similarity = pickle.loads(similarity_content)
+    movies = pickle.load(movie_content)
+    similarity = pickle.load(similarity_content)
 
 
 
