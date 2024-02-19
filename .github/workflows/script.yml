@@ -1,4 +1,4 @@
-name: Run Movie Recommender App
+name: Download Models and Push to Main
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  run_app:
+  download_models:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,8 +22,8 @@ jobs:
       run: |
         pip install -r requirements.txt
 
-    - name: Run Movie Recommender App
-      run: python app.py
+    - name: Download Models
+      run: python app.py download_models
 
     - name: Save Models to Main Repo
       run: |
