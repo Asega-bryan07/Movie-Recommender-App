@@ -59,11 +59,11 @@ def main():
             recommended_movie_posters.append(fetch_poster(movie_id))
         return recommended_movie_names, recommended_movie_posters
 
-    
+    # the movie title
     st.header('MOVIE RECOMMENDER APP')
+    # models
     similarity_file_id = '1uUb33kGuLlyJAIQlNPNRgR5zUDnFz3Cr'
     movie_list_file_id = '1X70vCuF4t5lHPysRi1XhJCfQHra5l4jI'
-
     # Use temporary files for the downloaded content
     with tempfile.NamedTemporaryFile(suffix='.pkl', delete=False) as sim_file, \
          tempfile.NamedTemporaryFile(suffix='.pkl', delete=False) as movie_file:
@@ -77,15 +77,13 @@ def main():
         movie_file.write(requests.get(movie_list_url).content)
     
         # Load movie_list.pkl and similarity.pkl
-        similarity_content = sim_file.read()
-        movie_content = movie_file.read()
+        sim_file.seek(0)
+        movie_file.seek(0) 
+
+        similarity = pickle.load(sim_file)
+        movies = pickle.load(movie_file)
+
     
-    # Unpickle the content
-    movies = pickle.load(movie_content)
-    similarity = pickle.load(similarity_content)
-
-
-
     movie_list = movies['title'].values
     selected_movie = st.selectbox('Type or Select a Movie Name 😎\n', movie_list)
     if st.button('Recommended Movie'):
@@ -109,7 +107,6 @@ def main():
             
             # st.write('Watch Out!\nLatest Version Coming Soon') 
             '''AI+'''
-
     
     st.markdown(
         """
