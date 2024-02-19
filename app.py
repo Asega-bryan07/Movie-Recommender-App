@@ -7,6 +7,7 @@ Date: 2024-02-05 14:31:59
 # Dependencies to use
 import pandas as pd
 import streamlit as st
+import pickle
 import requests
 from streamlit_option_menu import option_menu
 import about, my_profile, mdbconnect
@@ -70,10 +71,14 @@ def main():
 
     st.header('MOVIE RECOMMENDER APP')
 
+    # with open("model/movie_list.pkl", "rb") as mfile:
+    #     movies = pd.read_pickle(mfile)
+    # with open("model/similarity.pkl", "rb") as sfile:
+    #     similarity = pd.read_pickle(sfile)
     with open("model/movie_list.pkl", "rb") as mfile:
-        movies = pd.read_pickle(mfile)
+        movies = pickle.load(mfile)
     with open("model/similarity.pkl", "rb") as sfile:
-        similarity = pd.read_pickle(sfile)
+        similarity = pickle.load(sfile)
 
 
     movie_list = movies['title'].values
