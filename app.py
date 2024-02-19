@@ -6,6 +6,10 @@ Date: 2024-02-05 14:31:59
 import pickle
 import streamlit as st
 import requests
+import os
+import shutil
+import gdown
+from google.colab import files
 
 def main():
     # Set page configuration
@@ -25,7 +29,7 @@ def main():
                 "shape in the next few days.\n\n""\n"
                 "Enjoy the app. Cheers! :)\n""\n"
                 "To access the codes and deployment pipeline, please visit my github page: ""\n"
-                "[https://github.com/asega-bryan07/movie-recommender-app](https://github.com/asega-bryan07/movie-recommender-app) "
+                "[https://github.com/asega-bryan07/movie-recommender-app](https://github.com/asega-bryan07/Movie-Recommender-App) "
                 # "or scan the QR-Code below:\n"
                 # "./profile/logo.jpg"
     )
@@ -56,9 +60,29 @@ def main():
         return recommended_movie_names, recommended_movie_posters
 
     
-    st.header('MOVIE RECOMMENDER APP')
-    movies = pickle.load(open('./model/movie_list.pkl', 'rb'))
-    similarity = pickle.load(open('./model/similarity.pkl', 'rb'))
+    # st.header('MOVIE RECOMMENDER APP')
+    # movies = pickle.load(open('./model/movie_list.pkl', 'rb'))
+    # similarity = pickle.load(open('./model/similarity.pkl', 'rb'))
+  
+
+    # Get the file IDs from GitHub secrets
+    similarity_secret = os.environ.get("sim_secret")
+    movie_list_secret = os.environ.get("movie_secret")
+    
+    # Specify the output paths for the downloaded files
+    similarity_path = './model/similarity.pkl'
+    movie_list_path = './model/movie_list.pkl'
+    
+    # Download similarity.pkl from Google Drive using GitHub secret
+    gdown.download(f'https://drive.google.com/uc?id={similarity_secret}', similarity_path, quiet=False)
+    
+    # Download movie_list.pkl from Google Drive using GitHub secret
+    gdown.download(f'https://drive.google.com/uc?id={movie_list_secret}', movie_list_path, quiet=False)
+    
+    # Load movie_list.pkl and similarity.pkl
+    movies = pickle.load(open(movie_list_path, 'rb'))
+    similarity = pickle.load(open(similarity_path, 'rb'))
+
 
     movie_list = movies['title'].values
     selected_movie = st.selectbox('Type or Select a Movie Name 😎\n', movie_list)
