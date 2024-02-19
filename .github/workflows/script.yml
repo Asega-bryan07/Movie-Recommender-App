@@ -1,9 +1,10 @@
-name: Download Models and Push to Main
+name: Download Models
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Run Movie Recommender App"]
+    types:
+      - completed
 
 jobs:
   download_models:
@@ -19,15 +20,14 @@ jobs:
         python-version: 3.8
 
     - name: Install Dependencies
-      run: |
-        pip install -r requirements.txt
+      run: pip install -r requirements.txt
 
     - name: Download Models
-      run: python app.py download_models
+      run: python download_models.py
 
     - name: Save Models to Main Repo
       run: |
-        git config --global user.email "almasibryan7@gmail.com"
+        git config --global user.email "Almasibryan7@gmail.com"
         git config --global user.name "Asega-bryan07"
         git add ./model/*
         git commit -m "Update models"
