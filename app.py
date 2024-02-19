@@ -9,6 +9,7 @@ import requests
 import os
 import shutil
 import io
+import gdown
 import tempfile
 
 def main():
@@ -64,6 +65,10 @@ def main():
     # models
     similarity_file_id = '1uUb33kGuLlyJAIQlNPNRgR5zUDnFz3Cr'
     movie_list_file_id = '1X70vCuF4t5lHPysRi1XhJCfQHra5l4jI'
+
+    similarity_url = f'https://drive.google.com/uc?id={similarity_file_id}'
+    movie_list_url = f'https://drive.google.com/uc?id={movie_list_file_id}'
+    
     # Use temporary files for the downloaded content
     with io.BytesIO(requests.get(similarity_url).content) as sim_file, \
          io.BytesIO(requests.get(movie_list_url).content) as movie_file:
