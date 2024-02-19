@@ -8,7 +8,7 @@ import streamlit as st
 import requests
 import os
 import shutil
-import gdown
+import io
 import tempfile
 
 def main():
@@ -65,25 +65,14 @@ def main():
     similarity_file_id = '1uUb33kGuLlyJAIQlNPNRgR5zUDnFz3Cr'
     movie_list_file_id = '1X70vCuF4t5lHPysRi1XhJCfQHra5l4jI'
     # Use temporary files for the downloaded content
-    with tempfile.NamedTemporaryFile(suffix='.pkl', delete=False) as sim_file, \
-         tempfile.NamedTemporaryFile(suffix='.pkl', delete=False) as movie_file:
-    
-        # Download similarity.pkl from Google Drive
-        similarity_url = f'https://drive.google.com/uc?id={similarity_file_id}'
-        sim_file.write(requests.get(similarity_url).content)
-    
-        # Download movie_list.pkl from Google Drive
-        movie_list_url = f'https://drive.google.com/uc?id={movie_list_file_id}'
-        movie_file.write(requests.get(movie_list_url).content)
+    with io.BytesIO(requests.get(similarity_url).content) as sim_file, \
+         io.BytesIO(requests.get(movie_list_url).content) as movie_file:
     
         # Load movie_list.pkl and similarity.pkl
-        sim_file.seek(0)
-        movie_file.seek(0) 
-
         similarity = pickle.load(sim_file)
         movies = pickle.load(movie_file)
 
-    
+    # Continue with the rest of your Streamlit app
     movie_list = movies['title'].values
     selected_movie = st.selectbox('Type or Select a Movie Name 😎\n', movie_list)
     if st.button('Recommended Movie'):
