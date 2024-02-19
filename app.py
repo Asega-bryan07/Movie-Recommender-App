@@ -9,6 +9,7 @@ import requests
 import os
 import shutil
 import gdown
+import tempfile
 
 def main():
     # Set page configuration
@@ -62,16 +63,27 @@ def main():
     st.header('MOVIE RECOMMENDER APP')
     similarity_file_id = '1uUb33kGuLlyJAIQlNPNRgR5zUDnFz3Cr'
     movie_list_file_id = '1X70vCuF4t5lHPysRi1XhJCfQHra5l4jI'
+
+    # Use temporary files for the downloaded content
+    with tempfile.NamedTemporaryFile(suffix='.pkl', delete=False) as sim_file, \
+         tempfile.NamedTemporaryFile(suffix='.pkl', delete=False) as movie_file:
     
-    # Download similarity.pkl from Google Drive
-    similarity_url = f'https://drive.google.com/uc?id={similarity_file_id}'
-    similarity_content = requests.get(similarity_url).content
+        # Download similarity.pkl from Google Drive
+        similarity_url = f'https://drive.google.com/uc?id={similarity_file_id}'
+        sim_file.write(requests.get(similarity_url).content)
+    
+        # Download movie_list.pkl from Google Drive
+        movie_list_url = f'https://drive.google.com/uc?id={movie_list_file_id}'
+        movie_file.write(requests.get(movie_list_url).content)
+    
+        # Load movie_list.pkl and similarity.pkl
+        similarity_content = sim_file.read()
+        movie_content = movie_file.read()
+    
+    # Unpickle the content
+    movies = pickle.loads(movie_content)
     similarity = pickle.loads(similarity_content)
-    
-    # Download movie_list.pkl from Google Drive
-    movie_list_url = f'https://drive.google.com/uc?id={movie_list_file_id}'
-    movie_list_content = requests.get(movie_list_url).content
-    movies = pickle.loads(movie_list_content)
+
 
 
     movie_list = movies['title'].values
