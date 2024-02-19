@@ -60,29 +60,19 @@ def main():
 
     
     st.header('MOVIE RECOMMENDER APP')
-    # Get the file IDs from GitHub secrets
-    similarity_secret = os.environ.get("sim_secret")
-    movie_list_secret = os.environ.get("movie_secret")
+    similarity_file_id = '1uUb33kGuLlyJAIQlNPNRgR5zUDnFz3Cr'
+    movie_list_file_id = '1X70vCuF4t5lHPysRi1XhJCfQHra5l4jI'
     
-    # Specify the output paths for the downloaded files
-    similarity_path = './model/similarity.pkl'
-    movie_list_path = './model/movie_list.pkl'
+    # Download similarity.pkl from Google Drive
+    similarity_url = f'https://drive.google.com/uc?id={similarity_file_id}'
+    similarity_content = requests.get(similarity_url).content
+    similarity = pickle.loads(similarity_content)
     
-    # Downloading similarity.pkl and movie_list.pkl from Google Drive using requests
-    similarity_url = f'https://drive.google.com/uc?id={similarity_secret}'
-    movie_list_url = f'https://drive.google.com/uc?id={movie_list_secret}'
-    
-    with requests.get(similarity_url, stream=True) as response:
-        with open(similarity_path, 'wb') as file:
-            file.write(response.content)
-    
-    with requests.get(movie_list_url, stream=True) as response:
-        with open(movie_list_path, 'wb') as file:
-            file.write(response.content)
-    
-    # Load movie_list.pkl and similarity.pkl
-    movies = pickle.load(open(movie_list_path, 'rb'))
-    similarity = pickle.load(open(similarity_path, 'rb'))
+    # Download movie_list.pkl from Google Drive
+    movie_list_url = f'https://drive.google.com/uc?id={movie_list_file_id}'
+    movie_list_content = requests.get(movie_list_url).content
+    movies = pickle.loads(movie_list_content)
+
 
     movie_list = movies['title'].values
     selected_movie = st.selectbox('Type or Select a Movie Name 😎\n', movie_list)
