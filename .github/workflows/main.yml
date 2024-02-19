@@ -22,7 +22,7 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: Download Models
-      run: python download_models.py
+      run: python model_download.py
 
     - name: Save Models to Main Repo
       run: |
