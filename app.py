@@ -60,11 +60,7 @@ def main():
         return recommended_movie_names, recommended_movie_posters
 
     
-    # st.header('MOVIE RECOMMENDER APP')
-    # movies = pickle.load(open('./model/movie_list.pkl', 'rb'))
-    # similarity = pickle.load(open('./model/similarity.pkl', 'rb'))
-  
-
+    st.header('MOVIE RECOMMENDER APP')
     # Get the file IDs from GitHub secrets
     similarity_secret = os.environ.get("sim_secret")
     movie_list_secret = os.environ.get("movie_secret")
