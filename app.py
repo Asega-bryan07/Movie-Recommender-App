@@ -11,13 +11,14 @@ import requests
 from streamlit_option_menu import option_menu
 import about, my_profile, mdbconnect
 
-
 # Set page configuration
 st.set_page_config(
         page_title="MOVIE RECOMMENDER APP - AI+",
         page_icon="⭐",
         layout="wide"
         )
+
+st.title("MOVIE APP")
 
 def main():
     # Sidebar with profile image and name
