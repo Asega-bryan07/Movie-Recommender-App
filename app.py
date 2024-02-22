@@ -60,20 +60,14 @@ class MovieApp:
             return full_path
 
         st.header('MOVIE RECOMMENDER APP')
-        movies.to_pickle("model/movie_list.pkl")
-        similarity.to_pickle("model/similarity.pkl")
         
+        # Load data from pickle files
         movies = pd.read_pickle("model/movie_list.pkl")
         similarity = pd.read_pickle("model/similarity.pkl")
 
-        # with open("model/movie_list.pkl", "rb") as mfile:
-        #     movies = pd.read_pickle(mfile)
-        # with open("model/similarity.pkl", "rb") as sfile:
-        #     similarity = pd.read_pickle(sfile)
-
         def recommend(movie):
             index = movies[movies['title'] == movie].index[0]
-            distances = sorted(list(enumerate(similarity[index])),reverse=True,key=lambda x: x[1])
+            distances = sorted(list(enumerate(similarity[index])), reverse=True, key=lambda x: x[1])
             recommended_movie_names = []
             recommended_movie_posters = []
             for i in distances[1:6]:
@@ -106,6 +100,6 @@ class MovieApp:
                 '''Latest Version Coming Soon'''
                 '''AI+'''
 
-# Create an instance of the MovieApp class and run the app
+# Create an instance of the MovieApp class and run the app..
 movie_app = MovieApp()
 movie_app.run()
