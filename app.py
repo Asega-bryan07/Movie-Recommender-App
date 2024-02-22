@@ -60,11 +60,16 @@ class MovieApp:
             return full_path
 
         st.header('MOVIE RECOMMENDER APP')
+        movies.to_pickle("model/movie_list.pkl")
+        similarity.to_pickle("model/similarity.pkl")
+        
+        movies = pd.read_pickle("model/movie_list.pkl")
+        similarity = pd.read_pickle("model/similarity.pkl")
 
-        with open("model/movie_list.pkl", "rb") as mfile:
-            movies = pd.read_pickle(mfile)
-        with open("model/similarity.pkl", "rb") as sfile:
-            similarity = pd.read_pickle(sfile)
+        # with open("model/movie_list.pkl", "rb") as mfile:
+        #     movies = pd.read_pickle(mfile)
+        # with open("model/similarity.pkl", "rb") as sfile:
+        #     similarity = pd.read_pickle(sfile)
 
         def recommend(movie):
             index = movies[movies['title'] == movie].index[0]
