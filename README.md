@@ -1,4 +1,4 @@
-<h5>The Movie Recommender App</h5>
+<h3>The Movie Recommender App</h3>
 <br>
 <h3>Using Machine Learning Algorithms</h3>
 
