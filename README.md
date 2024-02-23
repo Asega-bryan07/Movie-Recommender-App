@@ -1,9 +1,10 @@
 <h5>The Movie Recommender App</h5>
-![image](https://github.com/Asega-bryan07/Movie-Recommender-App/assets/111067639/da3250b0-6564-4d5a-a66f-e8230fede55a)
+![image](https://github.com/Asega-bryan07/Movie-Recommender-App/assets/111067639/6d2aadfd-829c-47f9-a1f0-4c38fb43a08f)
+
 
 <h3>Using Machine Learning Algorithms</h3>
-<br>
-![image](https://github.com/Asega-bryan07/Movie-Recommender-App/assets/111067639/fb445878-2cac-4b10-a471-a1d05a479048)
+![image](https://github.com/Asega-bryan07/Movie-Recommender-App/assets/111067639/c9aa041f-b44c-419a-8d75-bb655e65a272)
+
 
  <br>
 The Movie Recommender App, is an application that has been developed and trained using machine learning algorithms; the cosine similarity. <br>
@@ -13,8 +14,7 @@ There is also an alternative given using dropdown menu where thousands of movies
 Some of the motivations that made me think and develop this one was the environment I stay at, the guys are real movie 'watchers', and this is one of their tools for more movies. <br>
 In the application’s architecture, the MovieDB API has been deployed in order to help give better recommendations and also give the exact movie ID and its images from the source. <br>
 Just as Netflix, Spotify or Goojar does it. <br>
-The personal focus was to deploy a machine learning application software online, this has been fun :) <br>
-![image](https://github.com/Asega-bryan07/Movie-Recommender-App/assets/111067639/f2dd207d-394c-40ed-8196-faaf1102d7e1)
+The personal focus was to deploy a machine learning application software online, this has been fun :) 
 
 Architecture:
  <br>
