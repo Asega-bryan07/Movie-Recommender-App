@@ -1,4 +1,4 @@
-<h5>The Movie Recommender App</h5> <br>
+<h5>The Movie Recommender App</h5>
 ![image](https://github.com/Asega-bryan07/Movie-Recommender-App/assets/111067639/da3250b0-6564-4d5a-a66f-e8230fede55a)
 
 <h3>Using Machine Learning Algorithms</h3>
