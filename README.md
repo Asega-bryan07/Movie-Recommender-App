@@ -1,9 +1,10 @@
-<h5>The Movie Recommender App</h5>h5> <br>
-![image](https://github.com/Asega-bryan07/Movie-Recommender-App/assets/111067639/52f13ca8-f0bf-437d-9fe1-334db87decc3)
+<h5>The Movie Recommender App</h5> <br>
+![image](https://github.com/Asega-bryan07/Movie-Recommender-App/assets/111067639/da3250b0-6564-4d5a-a66f-e8230fede55a)
 
-<h3>Using Machine Learning Algorithms</h3>h3>
+<h3>Using Machine Learning Algorithms</h3>
 <br>
-![image](https://github.com/Asega-bryan07/Movie-Recommender-App/assets/111067639/c2a5e47f-5c5c-4ad5-99ab-00673d864689)
+![image](https://github.com/Asega-bryan07/Movie-Recommender-App/assets/111067639/fb445878-2cac-4b10-a471-a1d05a479048)
+
  <br>
 The Movie Recommender App, is an application that has been developed and trained using machine learning algorithms; the cosine similarity. <br>
 The app has the ability to recommend movies that are almost/similar to the movies that a user of the application will input in the form.  <br>
