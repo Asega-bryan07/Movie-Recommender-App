@@ -1,7 +1,6 @@
 <h5>The Movie Recommender App</h5>
-![Image 1](profile/img1.jpg)
+<br>
 <h3>Using Machine Learning Algorithms</h3>
-![Image 2](profile/img2.jpg)
 
  <br>
 The Movie Recommender App, is an application that has been developed and trained using machine learning algorithms; the cosine similarity. <br>
